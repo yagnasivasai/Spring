@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/* @Autowired: This is used to inject the StudentRepository into the controller.
+   studentRepository.save(student): This saves the student object to the database.
+   studentRepository.findAll(): This retrieves all students stored in the database.
+
+*/
+
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
