@@ -71,3 +71,14 @@
 //        students.add(student); // Add the student to the list
 //        return student; // Return the added student
 //    }
+//@PostMapping("/add")
+//public ResponseEntity<?> addStudent(@Valid @RequestBody Student student, BindingResult result) {
+//    if (result.hasErrors()) {
+//        Map<String, String> errors = new HashMap<>();
+//        for (FieldError error : result.getFieldErrors()) {
+//            errors.put(error.getField(), error.getDefaultMessage());
+//        }
+//        return ResponseEntity.badRequest().body(errors);
+//    }
+//    return ResponseEntity.ok(studentService.saveStudent(student));
+//}

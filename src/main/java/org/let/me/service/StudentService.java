@@ -1,6 +1,7 @@
 package org.let.me.service;
 
 
+import org.let.me.exception.StudentNotFoundException;
 import org.let.me.model.Student;
 import org.let.me.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class StudentService {
 
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException("Student with ID " + id + " not found"));
     }
 
     public Student saveStudent(Student student){
