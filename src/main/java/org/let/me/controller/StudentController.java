@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import org.let.me.model.Student;
 import org.let.me.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +67,8 @@ public class StudentController {
 
         return ResponseEntity.ok(studentService.saveStudent(student));
     }
-
+    @GetMapping
+    public Page<Student> getStudents(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
+        return studentService.getStudents(page, size);
+    }
 }
