@@ -17,26 +17,24 @@ import jakarta.persistence.Id;
 @Id: Marks the id field as the primary key.
 @GeneratedValue(strategy = GenerationType.IDENTITY): Tells Spring to generate unique IDs automatically for each student.
 */
-
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // ID will be generated automatically in the database
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-generate ID
+    private Long id;
+
     private String name;
-    private String email;
+    private int age;
 
     public Student() {
     }
 
-    // Constructor to create a Student
-    public Student(String name, String email) {
+    public Student(String name, int age) {
         this.name = name;
-        this.email = email;
+        this.age = age;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -45,24 +43,20 @@ public class Student {
         this.id = id;
     }
 
-    // Getter for name
     public String getName() {
         return name;
     }
 
-    // Setter for name
     public void setName(String name) {
         this.name = name;
     }
 
-    // Getter for email
-    public String getEmail() {
-        return email;
+    public int getAge() {
+        return age;
     }
 
-    // Setter for email
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAge(int age) {
+        this.age = age;
     }
 }
 

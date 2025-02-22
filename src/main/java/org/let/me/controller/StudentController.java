@@ -33,5 +33,15 @@ public class StudentController {
         return studentService.saveStudent(student);  // Add student to DB
     }
 
+    @PutMapping("/update/{id}")
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+        return "Student deleted successfully!";
+    }
 
 }

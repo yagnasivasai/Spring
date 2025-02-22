@@ -25,4 +25,20 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
+    public Student updateStudent(Long id, Student studentdetails){
+        Student student = studentRepository.findById(id).orElseThrow(()-> new RuntimeException("Student not found"));
+        student.setName(studentdetails.getName());
+        student.setAge(studentdetails.getAge());
+        return  studentRepository.save(student);
+    }
+
+    public void deleteStudent(Long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        studentRepository.delete(student);
+    }
+
+
+
 }
