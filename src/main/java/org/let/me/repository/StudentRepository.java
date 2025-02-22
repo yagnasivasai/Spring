@@ -1,9 +1,10 @@
-package org.let.me;
+package org.let.me.repository;
 
 
 /*JpaRepository: Provides built-in methods for performing CRUD operations like save(), findAll(), findById(), etc.
 You don't need to write the implementation for these methods; Spring Data JPA will do it for you.*/
 
+import org.let.me.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

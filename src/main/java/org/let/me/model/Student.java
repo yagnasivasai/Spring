@@ -1,10 +1,9 @@
-package org.let.me;
+package org.let.me.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.stereotype.Component;
 
 // Define the Student Entity
 // Create the Repository Layer
