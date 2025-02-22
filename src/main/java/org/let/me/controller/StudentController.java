@@ -1,9 +1,12 @@
 package org.let.me.controller;
 
 
+import jakarta.validation.Valid;
 import org.let.me.model.Student;
 import org.let.me.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +31,11 @@ public class StudentController {
         return studentService.getAllStudents();  // Fetch students from DB
     }
 
+    @GetMapping("/{id}")
+    public Student getStudentById(Long id){
+        return studentService.getStudentById(id);
+    }
+
     @PostMapping("/add")
     public Student addStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);  // Add student to DB
@@ -42,6 +50,16 @@ public class StudentController {
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return "Student deleted successfully!";
+    }
+
+    @PostMapping("/addCheck")
+    public ResponseEntity<?> addStudent(@Valid @RequestBody Student student, BindingResult result){
+        if (result.hasErrors()){
+            List<String> errors = result.getAllErrors().stream().map(error -> error.getDefaultMessage()).toList();
+            return ResponseEntity.badRequest().body(errors);
+        }
+
+        return ResponseEntity.ok(studentService.saveStudent(student));
     }
 
 }
