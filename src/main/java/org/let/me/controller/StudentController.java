@@ -1,6 +1,8 @@
-package org.let.me;
+package org.let.me.controller;
 
 
+import org.let.me.model.Student;
+import org.let.me.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
