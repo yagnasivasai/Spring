@@ -31,9 +31,14 @@ public class StudentController {
         return studentService.getAllStudents();  // Fetch students from DB
     }
 
+//    @GetMapping("/{id}")
+//    public Student getStudentById(Long id){
+//        return studentService.getStudentById(id);
+//    }
+
     @GetMapping("/{id}")
-    public Student getStudentById(Long id){
-        return studentService.getStudentById(id);
+    public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
+        return ResponseEntity.ok(studentService.getStudentById(id));
     }
 
     @PostMapping("/add")
