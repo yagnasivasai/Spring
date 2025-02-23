@@ -5,6 +5,9 @@ import org.let.me.exception.StudentNotFoundException;
 import org.let.me.model.Student;
 import org.let.me.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,6 +48,10 @@ public class StudentService {
         studentRepository.delete(student);
     }
 
+    public Page<Student> getStudents(int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return studentRepository.findAll(pageable);
+    }
 
 
 }
